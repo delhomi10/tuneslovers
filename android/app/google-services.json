@@ -1,0 +1,82 @@
+{
+    "project_info": {
+        "project_number": "805908232824",
+        "project_id": "go-events-7",
+        "storage_bucket": "go-events-7.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:805908232824:android:d62580e0b4efe6f3804b8d",
+                "android_client_info": {
+                    "package_name": "com.akatsuki.go_events"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "805908232824-u10uat47mdr52t22p4sleqrd93nbggeg.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyA7MD0EKgXSI5TxFuBADHmSqXfwmajgu0U"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "805908232824-u10uat47mdr52t22p4sleqrd93nbggeg.apps.googleusercontent.com",
+                            "client_type": 3
+                        },
+                        {
+                            "client_id": "805908232824-vb326nlgtlmsnd52sg5ov5ssjhmp41ch.apps.googleusercontent.com",
+                            "client_type": 2,
+                            "ios_info": {
+                                "bundle_id": "com.example.goEvents"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:805908232824:android:91ba91110b478a81804b8d",
+                "android_client_info": {
+                    "package_name": "com.tuneslovers.tunes_lovers"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "805908232824-u10uat47mdr52t22p4sleqrd93nbggeg.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyA7MD0EKgXSI5TxFuBADHmSqXfwmajgu0U"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "805908232824-u10uat47mdr52t22p4sleqrd93nbggeg.apps.googleusercontent.com",
+                            "client_type": 3
+                        },
+                        {
+                            "client_id": "805908232824-vb326nlgtlmsnd52sg5ov5ssjhmp41ch.apps.googleusercontent.com",
+                            "client_type": 2,
+                            "ios_info": {
+                                "bundle_id": "com.example.goEvents"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}

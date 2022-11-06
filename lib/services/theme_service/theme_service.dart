@@ -243,9 +243,9 @@ class ThemeService {
           offset: Offset(0, 1),
           blurRadius: 4)
       : const BoxShadow(
-          color: Color.fromRGBO(98, 109, 120, 0.14),
-          offset: Offset(0, 1),
-          blurRadius: 4);
+          color: Color.fromARGB(31, 12, 10, 12),
+          offset: Offset(2, 2),
+          blurRadius: 2);
 
   static bool isDark(BuildContext context) =>
       ThemeProvider.controllerOf(context).currentThemeId ==

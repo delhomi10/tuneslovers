@@ -366,57 +366,62 @@ class _EditFeedUIState extends State<EditFeedUI> {
                       ],
                     ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.all(SizeService.innerPadding),
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  SizeService.borderRadius,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: SizeService.outerHorizontalPadding,
+                        vertical: SizeService.innerVerticalPadding),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.all(SizeService.innerPadding),
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    SizeService.borderRadius,
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Text(
-                              "Cancel",
-                              style: GoogleFonts.lato(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w600,
+                              child: Text(
+                                "Cancel",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.all(SizeService.innerPadding),
-                          child: ElevatedButton(
-                            onPressed: snapshot.data! ? null : onSubmit,
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  SizeService.borderRadius,
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.all(SizeService.innerPadding),
+                            child: ElevatedButton(
+                              onPressed: snapshot.data! ? null : onSubmit,
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    SizeService.borderRadius,
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Text(
-                              widget.isEdit ? "Update" : "Create",
-                              style: GoogleFonts.lato(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w600,
+                              child: Text(
+                                widget.isEdit ? "Update" : "Create",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               );

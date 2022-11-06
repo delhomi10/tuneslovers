@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tunes_lovers/models/performer.dart';
+import 'package:tunes_lovers/services/global_services/global_services.dart';
 import 'package:tunes_lovers/services/size_service/size_service.dart';
 import 'package:tunes_lovers/services/theme_service/dark_theme.dart';
 import 'package:tunes_lovers/services/theme_service/theme_service.dart';
@@ -15,7 +15,7 @@ class GenresSelectorUI extends StatefulWidget {
 }
 
 class _GenresSelectorUIState extends State<GenresSelectorUI> {
-  List<DropdownMenuItem<String>> get dropdownItems => Performer.genres
+  List<DropdownMenuItem<String>> get dropdownItems => GlobalServices.genres
       .map((e) => DropdownMenuItem<String>(
             onTap: () {
               if (!widget.selectedGenres.contains(e)) {

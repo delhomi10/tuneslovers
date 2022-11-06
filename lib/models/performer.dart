@@ -1,24 +1,6 @@
 import 'package:tunes_lovers/models/social.dart';
 
 class Performer {
-  static List<String> genres = [
-    "Techno",
-    "House",
-    "Electro",
-    "Dubstep ",
-    "Electro-Pop",
-    "Trance",
-    "Jungle And Drum & Bass",
-    "Breakbeat",
-    "Downtempo",
-    "Ambient",
-    "Synthwave",
-    "IDM",
-    "Garage",
-    "Industrial and Post-Industrial",
-    "Hardcore",
-  ];
-
   final String id;
   final String name;
   final String email;

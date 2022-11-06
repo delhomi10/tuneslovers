@@ -48,13 +48,18 @@ class FeedsPage extends StatelessWidget {
                     return Container(
                       margin: const EdgeInsets.symmetric(
                         vertical: SizeService.innerVerticalPadding,
+                        horizontal: SizeService.innerHorizontalPadding,
                       ),
                       padding: const EdgeInsets.symmetric(
                         vertical: SizeService.innerVerticalPadding,
                         horizontal: SizeService.innerHorizontalPadding,
                       ),
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
                         color: Theme.of(context).cardTheme.color,
+                        boxShadow: [
+                          ThemeService.boxShadow(context),
+                        ],
                       ),
                       child: ListTile(
                         contentPadding: const EdgeInsets.all(0),
@@ -99,6 +104,44 @@ class FeedsPage extends StatelessWidget {
                                       ? DarkTheme.secondaryTextColor
                                       : LightTheme.secondaryTextColor,
                                 ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  TextButton.icon(
+                                    onPressed: () {
+                                      if (feed.likes
+                                          .containsKey(person.userId)) {
+                                        feed.likes.remove(person.userId);
+                                      } else {
+                                        feed.likes.addAll(
+                                            {person.userId: person.userId});
+                                      }
+                                      FirebaseFirestore.instance
+                                          .collection("Feed")
+                                          .doc(feed.id)
+                                          .update({"likes": feed.likes});
+                                    },
+                                    icon: Icon(
+                                      feed.likes.containsKey(person.userId)
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color:
+                                          feed.likes.containsKey(person.userId)
+                                              ? ThemeService.secondaryColor
+                                              : ThemeService.primaryColor,
+                                    ),
+                                    label: Text(
+                                      "Like",
+                                      style: GoogleFonts.lato(
+                                        color: feed.likes
+                                                .containsKey(person.userId)
+                                            ? ThemeService.secondaryColor
+                                            : ThemeService.primaryColor,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

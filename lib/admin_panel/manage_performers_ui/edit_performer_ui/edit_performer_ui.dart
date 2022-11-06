@@ -12,6 +12,7 @@ import 'package:tunes_lovers/custom_widgets/error_dialog/error_dialog.dart';
 import 'package:tunes_lovers/models/performer.dart';
 import 'package:tunes_lovers/models/person.dart';
 import 'package:tunes_lovers/models/social.dart';
+import 'package:tunes_lovers/services/global_services/global_services.dart';
 import 'package:tunes_lovers/services/size_service/size_service.dart';
 import 'package:tunes_lovers/services/theme_service/dark_theme.dart';
 import 'package:tunes_lovers/services/theme_service/light_theme.dart';
@@ -90,7 +91,7 @@ class _EditPerformerUIState extends State<EditPerformerUI> {
 
   List<String> tags = [];
 
-  List<DropdownMenuItem<String>> get dropdownItems => Performer.genres
+  List<DropdownMenuItem<String>> get dropdownItems => GlobalServices.genres
       .map((e) => DropdownMenuItem<String>(
             onTap: () {
               if (!tags.contains(e)) {

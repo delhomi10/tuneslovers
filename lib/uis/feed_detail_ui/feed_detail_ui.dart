@@ -4,6 +4,7 @@ import 'package:tunes_lovers/models/feed.dart';
 import 'package:tunes_lovers/models/person.dart';
 import 'package:tunes_lovers/services/size_service/size_service.dart';
 import 'package:tunes_lovers/services/theme_service/theme_service.dart';
+import 'package:tunes_lovers/uis/feed_detail_ui/comment_ui.dart';
 
 class FeedDetailUI extends StatelessWidget {
   final Person person;
@@ -18,56 +19,99 @@ class FeedDetailUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            title: Text(feed.title),
+      body: Column(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  title: Text(feed.title),
+                ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image(
+                            width: double.infinity,
+                            height: SizeService(context).height * 0.4,
+                            fit: BoxFit.cover,
+                            image: NetworkImage(feed.coverImage),
+                          ),
+                        ),
+                        Text(
+                          feed.title,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 20.0,
+                            color: ThemeService.secondaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: SizeService.separatorHeight * 2,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: feed.content
+                              .map((e) => Text(
+                                    "\t\t $e",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .color,
+                                    ),
+                                  ))
+                              .toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Image(
-                      width: double.infinity,
-                      height: SizeService(context).height * 0.4,
-                      fit: BoxFit.cover,
-                      image: NetworkImage(feed.coverImage),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    enableDrag: true,
+                    context: context,
+                    builder: (context) {
+                      return CommentUI(feedId: feed.id, person: person);
+                    });
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                    vertical: SizeService(context).height * 0.01),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Theme.of(context).cardTheme.color,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Comments...",
+                      style: GoogleFonts.lato(
+                        fontSize: 14.0,
+                      ),
                     ),
-                  ),
-                  Text(
-                    feed.title,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.lato(
-                      fontSize: 20.0,
-                      color: ThemeService.secondaryColor,
-                      fontWeight: FontWeight.w600,
+                    const Icon(
+                      Icons.message,
+                      color: ThemeService.primaryColor,
                     ),
-                  ),
-                  const SizedBox(
-                    height: SizeService.separatorHeight * 2,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: feed.content
-                        .map((e) => Text(
-                              "\t\t $e",
-                              style: GoogleFonts.lato(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w500,
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1!
-                                    .color,
-                              ),
-                            ))
-                        .toList(),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

@@ -179,7 +179,7 @@ class FeedsTagsUI extends StatelessWidget {
                                               : ThemeService.primaryColor,
                                         ),
                                         label: Text(
-                                          "Like",
+                                          feed.likes.length.toString(),
                                           style: GoogleFonts.lato(
                                             color: feed.likes
                                                     .containsKey(person.userId)

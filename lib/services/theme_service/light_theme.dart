@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LightTheme {
-// Body and Background Colors
-  static const Color cardBackgroundColor = Color(0xFFFFFFFF);
+// Body and Background Colors#F6F6F7
+  static const Color cardBackgroundColor = Color(0xFFF6F6F7);
   static const Color mainBackgroundColor = Color(0xFFFFFFFF);
   static const Color lightBackgroundColor = Color(0xFFFFFFFF);
 

@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tunes_lovers/models/feed.dart';
 import 'package:tunes_lovers/models/person.dart';
@@ -59,7 +61,7 @@ class FeedDetailUI extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: feed.content
                               .map((e) => Text(
-                                    "\t\t $e",
+                                    e,
                                     style: GoogleFonts.lato(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w500,
@@ -71,6 +73,50 @@ class FeedDetailUI extends StatelessWidget {
                                   ))
                               .toList(),
                         ),
+                        const SizedBox(
+                          height: SizeService.separatorHeight * 2,
+                        ),
+                        Text(
+                          "Images",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 20.0,
+                            color: ThemeService.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: SizeService.separatorHeight,
+                        ),
+                        feed.images.length == 1
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: CachedNetworkImage(
+                                  imageUrl: feed.images.first,
+                                  fit: BoxFit.cover,
+                                  height: SizeService(context).height * 0.25,
+                                ),
+                              )
+                            : SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: feed.images
+                                      .map(
+                                        (e) => ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                          child: CachedNetworkImage(
+                                            imageUrl: e,
+                                            fit: BoxFit.cover,
+                                            height:
+                                                SizeService(context).height *
+                                                    0.25,
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
                       ],
                     ),
                   ),
